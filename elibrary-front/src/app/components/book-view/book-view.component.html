@@ -1,0 +1,43 @@
+<mat-card>
+    <mat-card-header>
+        @if (isOwner$ | async) {
+            <form
+                [formGroup]="bookData"
+                style="width: 100%;"
+            >
+                <mat-form-field>
+                    <mat-label>Book name</mat-label>
+                    <input matInput type="text" formControlName="name">
+                </mat-form-field>
+            </form>
+        } @else {
+            <h1>{{(book$ | async)?.name}}</h1>
+        }
+    </mat-card-header>
+    <mat-card-content>
+        @if (isOwner$ | async) {
+            <form [formGroup]="bookData">
+                <mat-form-field>
+                    <mat-label>Book content</mat-label>
+                    <textarea
+                        matInput
+                        type="text"
+                        formControlName="content"
+                        rows="10"
+                    ></textarea>
+                </mat-form-field>
+    
+                <button
+                    mat-raised-button
+                    color="primary"
+                    style="margin-right: 20px;"
+                >Delete book</button>
+                <button mat-raised-button color="primary" (click)="submit()">Save book</button>
+            </form>
+        } @else {
+            <div>
+                {{(book$ | async)?.content}}
+            </div>
+        }
+    </mat-card-content>
+</mat-card>

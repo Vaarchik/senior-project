@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    flex-grow: 1;
+
+    mat-card {
+      width: 400px;
+      margin: auto;
+      text-align: center;
+    }
+
+    mat-form-field {
+      display: block;
+    }
+
+    .sign-up-button {
+        margin-top: 20px;
+    }
+}

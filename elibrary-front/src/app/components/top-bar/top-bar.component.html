@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button
+            mat-button
+            routerLink="/"
+            class="top-bar-logo"
+        >
+            E-Library
+        </button>
+        <span class="example-spacer"></span>
+        <div class="top-bar-user">
+            @if (user$ | async; as user) {
+                <button
+                    mat-raised-button
+                    [matMenuTriggerFor]="menu"
+                >{{user.name || user.email}}</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLink="/profile">Profile</button>
+                    <button mat-menu-item routerLink="/add-book">Add Book</button>
+                </mat-menu>
+            } @else {
+                <button
+                    mat-raised-button
+                    routerLink="/signin"
+                    routerLinkActive="active"
+                    ariaCurrentWhenActive="page"
+                >Sign In</button>
+            }
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

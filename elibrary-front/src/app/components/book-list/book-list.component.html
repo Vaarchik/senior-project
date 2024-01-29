@@ -1,0 +1,21 @@
+@for (book of (books$ | async); track $index) {
+    <div class="book-container">
+        <mat-card>
+            <mat-card-header>
+                <h2>{{book.name}}</h2>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="owner-field">Owner: {{book.owner?.name || 'Anonymous'}}</div>
+                <button
+                    mat-raised-button
+                    color="primary"
+                    (click)="openBook(book)"
+                >Open book</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+} @empty {
+    <div>
+        No books here
+    </div>
+}
